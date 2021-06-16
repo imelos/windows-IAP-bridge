@@ -10,6 +10,7 @@
             "src/RequestPurchaseAsyncWorker.cpp",
             "src/GetStoreProductsAsyncWorker.cpp",
             "src/GetCustomerPurchaseIdAsyncWorker.cpp",
+            "src/GetCustomerCollectionsIdAsyncWorker.cpp",
             "src/GetAppLicenseAsyncWorker.cpp"
         ],
         'include_dirs': [

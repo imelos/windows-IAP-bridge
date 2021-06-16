@@ -41,6 +41,8 @@ public:
 
   std::string GetCustomerPurchaseId(std::string token, std::string id);
   winrt::Windows::Foundation::IAsyncAction GetCustomerPurchaseIdAsync(std::string token, std::string id);
+  std::string GetCustomerCollectionsId(std::string token, std::string id);
+  winrt::Windows::Foundation::IAsyncAction GetCustomerCollectionsIdAsync(std::string token, std::string id);
   StorePurchaseResult RequestPurchaseAsync(std::string storeId);
   StorePurchaseResult
   RequestPurchaseAsync(std::string storeId,

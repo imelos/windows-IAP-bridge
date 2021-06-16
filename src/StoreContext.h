@@ -14,6 +14,7 @@ private:
   Napi::Value GetAppLocalStorageFolder(const Napi::CallbackInfo &info);
   void GetAssociatedStoreProductsAsync(const Napi::CallbackInfo &info);
   void GetCustomerPurchaseIdAsync(const Napi::CallbackInfo &info);
+  void GetCustomerCollectionsIdAsync(const Napi::CallbackInfo &info);
   void RequestPurchaseAsync(const Napi::CallbackInfo &info);
   void GetAppLicenseAsync(const Napi::CallbackInfo &info);
 

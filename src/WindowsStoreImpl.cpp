@@ -166,6 +166,38 @@ Windows::Foundation::IAsyncAction WindowsStoreImpl::GetCustomerPurchaseIdAsync(s
   co_return;
 }
 
+std::string WindowsStoreImpl::GetCustomerCollectionsId(std::string token, std::string id) {
+  std::wstring w_token(token.begin(), token.end());
+  std::wstring w_id(id.begin(), id.end());
+  StoreContext context = StoreContext::GetDefault();
+  auto initWindow = context.try_as<IInitializeWithWindow>();
+  if (initWindow != nullptr) {
+    HRESULT hr = initWindow->Initialize(m_hwnd);
+  }
+
+  auto result = context.GetCustomerCollectionsIdAsync(w_token, w_id).get();
+  if (result.empty()) {
+    return "";
+  } else {
+    return winrt::to_string(result);
+  }
+}
+
+Windows::Foundation::IAsyncAction WindowsStoreImpl::GetCustomerCollectionsIdAsync(std::string token, std::string id) {
+  // co_await winrt::resume_background();
+
+  std::wstring w_token(token.begin(), token.end());
+  std::wstring w_id(id.begin(), id.end());
+  StoreContext context = StoreContext::GetDefault();
+  auto initWindow = context.try_as<IInitializeWithWindow>();
+  if (initWindow != nullptr) {
+    HRESULT hr = initWindow->Initialize(m_hwnd);
+  }
+
+  hstring result = co_await context.GetCustomerCollectionsIdAsync(w_token, w_id); // ignore the co_await error squiggly
+  co_return;
+}
+
 WindowsStoreImpl::StorePurchaseResult WindowsStoreImpl::RequestPurchaseAsync(std::string storeId) {
   StoreContext context = StoreContext::GetDefault();
   auto initWindow = context.try_as<IInitializeWithWindow>();

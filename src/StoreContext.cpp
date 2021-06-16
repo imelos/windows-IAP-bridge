@@ -21,6 +21,7 @@ Napi::Object StoreContext::Init(Napi::Env env, Napi::Object exports) {
                       InstanceMethod("getAppLocalStorageFolder", &StoreContext::GetAppLocalStorageFolder),
                       InstanceMethod("getAssociatedStoreProductsAsync", &StoreContext::GetAssociatedStoreProductsAsync),
                       InstanceMethod("getCustomerPurchaseIdAsync", &StoreContext::GetCustomerPurchaseIdAsync),
+                      InstanceMethod("getCustomerCollectionsIdAsync", &StoreContext::GetCustomerCollectionsIdAsync),
                       InstanceMethod("requestPurchaseAsync", &StoreContext::RequestPurchaseAsync),
                       InstanceMethod("getAppLicenseAsync", &StoreContext::GetAppLicenseAsync),
                   });
@@ -65,6 +66,16 @@ void StoreContext::GetCustomerPurchaseIdAsync(const Napi::CallbackInfo &info) {
   Napi::String type = info[1].As<Napi::String>();
   Napi::Function cb = info[2].As<Napi::Function>();
   (new GetCustomerPurchaseIdAsyncWorker(cb, token, type, GetInternalInstance()))->Queue();
+}
+
+void StoreContext::GetCustomerCollectionsIdAsync(const Napi::CallbackInfo &info) {
+  Napi::Env env = info.Env();
+  Napi::HandleScope scope(env);
+
+  Napi::String token = info[0].As<Napi::String>();
+  Napi::String type = info[1].As<Napi::String>();
+  Napi::Function cb = info[2].As<Napi::Function>();
+  (new GetCustomerCollectionsIdAsyncWorker(cb, token, type, GetInternalInstance()))->Queue();
 }
 
 Napi::Value StoreContext::GetAppLocalStorageFolder(const Napi::CallbackInfo &info) {

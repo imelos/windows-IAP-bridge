@@ -57,6 +57,8 @@ declare module "polarr_windows_store" {
 
         getCustomerPurchaseIdAsync(serviceTicket: String, publisherUserId: String, callback: (error: Error, result: String) => void): void;
 
+        getCustomerCollectionsIdAsync(serviceTicket: String, publisherUserId: String, callback: (error: Error, result: String) => void): void;
+
         getAppLicenseAsync(callback: (error: Error, result: StoreAppLicense) => void): void;
 
         getAssociatedStoreProductsAsync(productKinds: Object, callback: (error: Error, result: StoreProductQueryResult) => void): void;
