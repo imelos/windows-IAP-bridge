@@ -1,5 +1,6 @@
 #include "StoreContext.h"
 #include "GetCustomerPurchaseIdAsyncWorker.h"
+#include "GetCustomerCollectionsIdAsyncWorker.h"
 #include "GetStoreProductsAsyncWorker.h"
 #include "RequestPurchaseAsyncWorker.h"
 #include "GetAppLicenseAsyncWorker.h"
